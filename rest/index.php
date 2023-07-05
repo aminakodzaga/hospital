@@ -1,0 +1,60 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+require "../vendor/autoload.php";
+
+require_once __DIR__."/services/DoctorService.php";
+require_once __DIR__."/services/NewsService.php";
+require_once __DIR__."/services/AppointmentService.php";
+require_once __DIR__."/services/DepartmentService.php";
+require_once __DIR__.'/dao/AdminDao.class.php';
+
+
+Flight::register('adminDao', 'AdminDao');
+Flight::register('doctor_service', "DoctorService");
+Flight::register('news_service', "NewsService");
+Flight::register('appointment_service', "AppointmentService");
+Flight::register('department_service', "DepartmentService");
+
+Flight::route('/locked/*', function(){
+      /*
+    $path = Flight::request()->url;
+    if (preg_match('/^\/(login|login.html|news(?:\/\d+)?|missing(?:\/\d+)?|wanted(?:\/\d+)?|newsletter|reports)$/', $path)) {
+      return TRUE; // exclude certain routes from middleware
+    }
+    */
+  
+      $headers = getallheaders();
+      if (@!$headers['Authorization']){
+          Flight::json(["message" => "Unauthorized access"], 403);
+          return FALSE;
+      } else {
+          try {
+              $decoded = JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
+              // Token is valid
+              Flight::set('admin', $decoded);
+              return TRUE;
+          } catch (\Exception $e) {
+              // Other errors
+              Flight::json(["message" => "Token authorization invalid"], 403);
+              return FALSE;
+          }
+  
+        
+      }
+  });
+
+require_once __DIR__.'/routes/DoctorRoutes.php';
+require_once __DIR__.'/routes/NewsRoutes.php';
+require_once __DIR__ .'/routes/AppointmentRoutes.php';
+require_once __DIR__.'/routes/DepartmentRoutes.php';
+require_once __DIR__.'/routes/AdminRoutes.php';
+
+
+Flight::start();
+?>

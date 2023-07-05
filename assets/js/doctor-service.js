@@ -9,25 +9,37 @@ var DoctorService = {
       DoctorService.list();
     },
 
-    list: function(){
-      $.get("rest/doctors", function(data) {
-        $("#doctor-list").html("");
-        var html = "";
-        for(let i = 0; i < data.length; i++){
-          html += `
-          <div class="col-lg-4">
-          <h2>`+ data[i].dname +`</h2>
-          <p>`+ data[i].specialities +`</p>
-            <p>
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-primary doctor-button" onclick="DoctorService.get(`+data[i].id+`)">Edit</button>
-                <button type="button" class="btn btn-danger doctor-button" onclick="DoctorService.delete(`+data[i].id+`)">Delete</button>
-              </div>
-            </p>
-          </div>`;
-        }
-        $("#doctor-list").html(html);
-      });
+    list: function() {
+        $.ajax({
+            url: "rest/doctors",
+            type: "GET",
+            success: function(data) {
+            $("#doctor-list").html("");
+            var html = "";
+            
+            
+            for (let i = 0; i<data.length; i++) {
+                html += `
+                <div class="col-md-3 col-sm-6">
+                    <div class="user-card">
+                        <div class="userar">
+                            <img class="teammempic" alt="" src="assets/images/team/`+data[i].image+`">
+                        </div>
+                        <div class="detfs">
+                            <strong><p>`+data[i].dname+`<i> - `+data[i].specialities+`</i></p></strong>
+                            <p>`+data[i].demail+`</p>
+                            <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary doctor-button" onclick="DoctorService.get(`+data[i].id+`)">Edit</button>
+                            <button type="button" class="btn btn-danger doctor-button" onclick="DoctorService.delete(`+data[i].id+`)">Delete</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                    `;
+                }
+                $("#doctor-list").html(html);
+            }
+        })
     },
 
     get: function(id){

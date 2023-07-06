@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @OA\Get(path="/appointment", tags={"appointment"},
+ * @OA\Get(path="/locked/appointment", tags={"appointment"},
  *         summary="Return all appointments from the API. ",
  *         @OA\Response( response=200, description="List of appointmentpeople.")
  * )
  */
-Flight::route('GET /appointment', function(){
+Flight::route('GET /locked/appointment', function(){
    Flight::json(Flight::appointment_service() -> get_all());
     
 });
@@ -17,20 +17,20 @@ Flight::route("GET /appointment_by_id", function(){
 });
 
 /**
- * @OA\Get(path="/appointment/{id}", tags={"appointment"},
+ * @OA\Get(path="/locked/appointment/{id}", tags={"appointment"},
  *         summary="Return appointment  by id from the API. ",
  *         @OA\Parameter(in="path", name="id", example=1, description="ID of appointment"),
  *         @OA\Response( response=200, description="Individual appointment.")
  * )
  */
-Flight::route('GET /appointment/@id', function($id){
+Flight::route('GET /locked/appointment/@id', function($id){
     Flight::json(Flight::appointment_service() -> get_by_id($id));
   
 });
 
 /**
 * @OA\Post(
-*     path="/appointment", security={{"ApiKeyAuth": {}}},
+*     path="/locked/appointment", security={{"ApiKeyAuth": {}}},
 *     description="Add appointment",
 *     tags={"appointment"},
 *     @OA\RequestBody(description="appointment ", required=true,
@@ -54,13 +54,13 @@ Flight::route('GET /appointment/@id', function($id){
 *     )
 * )
 */
-Flight::route('POST /appointment', function(){
+Flight::route('POST /locked/appointment', function(){
   Flight::json(Flight::appointment_service()->add(Flight::request()->data->getData()));
   });
 
  /**
 * @OA\Put(
-*     path="/appointment/{id}", security={{"ApiKeyAuth": {}}},
+*     path="locked/appointment/{id}", security={{"ApiKeyAuth": {}}},
 *     description="Update appointment",
 *     tags={"appointment"},
 *     @OA\Parameter(in="path", name="id", example=1, description="appointment_id"),
@@ -84,7 +84,7 @@ Flight::route('POST /appointment', function(){
 *     )
 * )
 */
-  Flight::route('PUT /appointment/@id', function($id){
+  Flight::route('PUT locked/appointment/@id', function($id){
     $appointment = Flight::request()->data->getData();
     Flight::json(['message' => "appointment edit successfully",
                   'data' => Flight::appointment_service()->update($appointment, $id)
@@ -93,7 +93,7 @@ Flight::route('POST /appointment', function(){
 
 /**
 * @OA\Delete(
-*     path="/appointment/{id}", security={{"ApiKeyAuth": {}}},
+*     path="locked/appointment/{id}", security={{"ApiKeyAuth": {}}},
 *     description="Delete appointment",
 *     tags={"appointment"},
 *     @OA\Parameter(in="path", name="id", example=1, description="appointment_id"),
@@ -107,7 +107,7 @@ Flight::route('POST /appointment', function(){
 *     )
 * )
 */
-Flight::route('DELETE /appointment/@id', function($id){
+Flight::route('DELETE locked/appointment/@id', function($id){
     Flight::appointment_service()->delete($id);
     Flight::json(["message"=> "deleted"]);
 });

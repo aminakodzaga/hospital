@@ -99,7 +99,7 @@ var NewsService = {
         
   
         $.ajax({
-          url: 'rest/news/'+$('#id').val(),
+          url: 'rest/locked/news/'+$('#id').val(),
           type: 'PUT',
           data: JSON.stringify(news),
           contentType: "application/json",
@@ -116,7 +116,7 @@ var NewsService = {
     delete: function(id){
         $('.doctor-button').attr('disabled', true);
         $.ajax({
-          url: 'rest/news/'+id,
+          url: 'rest/locked/news/'+id,
           type: 'DELETE',
           success: function(result) {
               $("#news-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');

@@ -104,6 +104,10 @@ var NewsService = {
           data: JSON.stringify(news),
           contentType: "application/json",
           dataType: "json",
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+          },
+            
           success: function(result) {
               $("#exampleModalN").modal("hide");
               $('.news-button').attr('disabled', false);
@@ -118,6 +122,9 @@ var NewsService = {
         $.ajax({
           url: 'rest/locked/news/'+id,
           type: 'DELETE',
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+          },
           success: function(result) {
               $("#news-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
               NewsService.list();

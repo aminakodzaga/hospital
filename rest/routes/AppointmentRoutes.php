@@ -3,7 +3,7 @@
 /**
  * @OA\Get(path="/appointment", tags={"appointment"},
  *         summary="Return all appointments from the API. ",
- *         @OA\Response( response=200, description="List of appointments.")
+ *         @OA\Response( response=200, description="List of appointmentpeople.")
  * )
  */
 Flight::route('GET /appointment', function(){
@@ -18,7 +18,7 @@ Flight::route("GET /appointment_by_id", function(){
 
 /**
  * @OA\Get(path="/appointment/{id}", tags={"appointment"},
- *         summary="Return appointments by id from the API. ",
+ *         summary="Return appointment  by id from the API. ",
  *         @OA\Parameter(in="path", name="id", example=1, description="ID of appointment"),
  *         @OA\Response( response=200, description="Individual appointment.")
  * )
@@ -31,20 +31,22 @@ Flight::route('GET /appointment/@id', function($id){
 /**
 * @OA\Post(
 *     path="/appointment", security={{"ApiKeyAuth": {}}},
-*     description="Add appointment ",
+*     description="Add appointment",
 *     tags={"appointment"},
-*     @OA\RequestBody(description="appointment info", required=true,
+*     @OA\RequestBody(description="appointment ", required=true,
 *       @OA\MediaType(mediaType="application/json",
 *    			@OA\Schema(
-*    				@OA\Property(property="date", type="date", example="2020-01-01 15:10:10",	description="Title of the note"),
-*    				@OA\Property(property="doctor_id", type="number", example=1,	description="Title of the note"),
-*    				@OA\Property(property="user_id", type="number", example=1,	description="Title of the note")
+*    				@OA\Property(property="date", type="datetime", example="2020-01-01 15:10:10",	description="Date"),
+*    				@OA\Property(property="doctor_id", type="integer", example=1,	description="Doctor id"),
+*    				@OA\Property(property="name", type="string", example="amina",	description="name"),
+*    				@OA\Property(property="address", type="string", example="sarajevo",	description="address"),
+*    				@OA\Property(property="country", type="string", example="BiH",	description="country")
 *    			
 *        )
 *     )),
 *     @OA\Response(
 *         response=200,
-*         description="appointment person has been added"
+*         description="appointment has been added"
 *     ),
 *     @OA\Response(
 *         response=500,
@@ -59,15 +61,17 @@ Flight::route('POST /appointment', function(){
  /**
 * @OA\Put(
 *     path="/appointment/{id}", security={{"ApiKeyAuth": {}}},
-*     description="Update appointment ",
+*     description="Update appointment",
 *     tags={"appointment"},
 *     @OA\Parameter(in="path", name="id", example=1, description="appointment_id"),
-*     @OA\RequestBody(description="appointment  info", required=true,
+*     @OA\RequestBody(description="appointment info", required=true,
 *       @OA\MediaType(mediaType="application/json",
 *    			@OA\Schema(
-*    		@OA\Property(property="date", type="date", example="2020-01-01 15:10:10",	description="Title of the note"),
-*    				@OA\Property(property="doctor_id", type="number", example=1,	description="Title of the note"),
-*    				@OA\Property(property="user_id", type="number", example=1,	description="Title of the note"),
+*    				@OA\Property(property="date", type="datetime", example="2020-01-01 15:10:10",	description="Date"),
+*    				@OA\Property(property="doctor_id", type="integer", example=1,	description="Doctor id"),
+*    				@OA\Property(property="name", type="string", example="amina",	description="name"),
+*    				@OA\Property(property="address", type="string", example="sarajevo",	description="address"),
+*    				@OA\Property(property="country", type="string", example="BiH",	description="country")
 *        )
 *     )),
 *     @OA\Response(
@@ -95,7 +99,7 @@ Flight::route('POST /appointment', function(){
 *     @OA\Parameter(in="path", name="id", example=1, description="appointment_id"),
 *     @OA\Response(
 *         response=200,
-*         description="appointment  deleted"
+*         description="appointment deleted"
 *     ),
 *     @OA\Response(
 *         response=500,

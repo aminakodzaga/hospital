@@ -10,7 +10,7 @@ use Firebase\JWT\Key;
 *     @OA\RequestBody(description="Admin info", required=true,
 *       @OA\MediaType(mediaType="application/json",
 *    			@OA\Schema(
-*    				@OA\Property(property="email", type="string", example="amina@gmail.com",	description="Email"),
+*    				@OA\Property(property="email", type="string", example="admin@gmail.com",	description="Email"),
 *    				@OA\Property(property="password", type="string", example="123",	description="Password" )
 *        )
 *     )),

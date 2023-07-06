@@ -17,7 +17,7 @@ Flight::route('GET /news/@id', function($id){
 });
 
 
-Flight::route('POST /news', function(){
+Flight::route('POST /locked/news', function(){
   $request = Flight::request()->data->getData();
   Flight::json(['message' => "news added successfully",
                 'data' => Flight::news_service()->add($request)
@@ -27,7 +27,7 @@ Flight::route('POST /news', function(){
   });
 
  
-  Flight::route('PUT /news/@id', function($id){
+  Flight::route('PUT /locked/news/@id', function($id){
     $news = Flight::request()->data->getData();
     Flight::json(['message' => "news edit successfully",
                   'data' => Flight::news_service()->update($news, $id)
@@ -35,7 +35,7 @@ Flight::route('POST /news', function(){
   });
 
 
-Flight::route('DELETE /news/@id', function($id){
+Flight::route('DELETE /locked/news/@id', function($id){
     Flight::news_service()->delete($id);
     Flight::json(["message"=> "deleted"]);
 });

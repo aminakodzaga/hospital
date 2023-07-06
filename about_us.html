@@ -90,7 +90,6 @@
                 <p>Take a look at our innovative and experiance team</p>
             </div>
             <div>
-            <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add doctor</button>
 
             <div class="row team-member" id="doctor-list">
                 <div class="spinner-border" style="margin: auto; width: 100px; height: 100px;" role="status">
@@ -158,71 +157,7 @@
 
 </body>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <input id="id" type="hidden" />
-            <input id="dname" type="text" />
-            <input id="dpassword" type="hidden" />
-            <input id="demail" type="text" />
-            <input id="specialities" type="text" />
-            <input id="image" type="text" />
-          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary save-doctor-button" onclick="DoctorService.update()">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- Add Modal -->
-<div class="modal fade" id="addDoctorModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="addDoctorForm">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add doctor</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                <label>Name</label>
-                <input name="dname" type="text" class="form-control required" placeholder="Enter name">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input name="demail" type="text" class="form-control required" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input name="dpassword" type="text" class="form-control required" placeholder="Enter password">
-                <div class="form-group">
-                    <label>Specialization</label>
-                    <input name="specialities" type="text" class="form-control required" placeholder="Enter specialization">
-                  </div>
-                  <div class="form-group">
-                    <label>image</label>
-                    <input name="image" type="text" class="form-control required" placeholder="Enter image">
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -231,10 +166,10 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
 <script src="assets/js/script.js"></script>
-<script src="assets/js/doctor-service.js"></script>
+<script src="assets/js/doctor-service-index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
-<script>DoctorService.init()</script>
+<script>DoctorServiceIndex.init()</script>
 
 
 </html>

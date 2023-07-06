@@ -57,11 +57,14 @@ var DoctorService = {
 
     add: function(doctor){
       $.ajax({
-        url: 'rest/doctors',
+        url: 'rest/locked/doctors',
         type: 'POST',
         data: JSON.stringify(doctor),
         contentType: "application/json",
         dataType: "json",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
         success: function(result) {
             $("#doctor-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
             DoctorService.list(); // perf optimization
@@ -81,11 +84,14 @@ var DoctorService = {
       doctor.image = $('#image').val();
 
       $.ajax({
-        url: 'rest/doctors/'+$('#id').val(),
+        url: 'rest/locked/doctors/'+$('#id').val(),
         type: 'PUT',
         data: JSON.stringify(doctor),
         contentType: "application/json",
         dataType: "json",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
         success: function(result) {
             $("#exampleModal").modal("hide");
             $('.save-doctor-button').attr('disabled', false);
@@ -98,8 +104,11 @@ var DoctorService = {
     delete: function(id){
       $('.doctor-button').attr('disabled', true);
       $.ajax({
-        url: 'rest/doctors/'+id,
+        url: 'rest/locked/doctors/'+id,
         type: 'DELETE',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
         success: function(result) {
             $("#doctor-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
             DoctorService.list();

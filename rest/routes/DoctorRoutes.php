@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @OA\Get(path="/doctors", tags={"doctors"},
+ *         summary="Return all appointments from the API. ",
+ *         @OA\Response( response=200, description="List of missing people.")
+ * )
+ */
 Flight::route('GET /doctors', function(){
  
     Flight::json(Flight::doctor_service() -> get_all());
@@ -22,12 +28,12 @@ Flight::route('GET /doctors/@id', function($id){
 });
 
 
-Flight::route('POST /doctors', function(){
+Flight::route('POST /locked/doctors', function(){
   Flight::json(Flight::doctor_service()->add(Flight::request()->data->getData()));
 });
 
  
-  Flight::route('PUT /doctors/@id', function($id){
+  Flight::route('PUT /locked/doctors/@id', function($id){
     $doctor = Flight::request()->data->getData();
     Flight::json(['message' => "Doctor edit successfully",
                   'data' => Flight::doctor_service()->update($doctor, $id)
@@ -35,7 +41,7 @@ Flight::route('POST /doctors', function(){
   });
 
 
-Flight::route('DELETE /doctors/@id', function($id){
+Flight::route('DELETE /locked/doctors/@id', function($id){
     Flight::doctor_service()->delete($id);
     Flight::json(["message"=> "deleted"]);
 });

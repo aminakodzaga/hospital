@@ -102,6 +102,8 @@
     <section class="our-blog">
          	<div class="container">
          		<div class="row session-title">
+                    <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add news</button>
+
         			<h2> Our Blog </h2>
         			<p>Take a look at what people say about US </p>
         		</div>
@@ -112,6 +114,24 @@
         		</div>
          	</div>
          </section>
+
+         <section class="our-team">
+            <div class="container">
+                <div class="inner-title">
+                    <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add doctor</button>
+
+                    <h2>Meet our Team</h2>
+                    <p>Take a look at our innovative and experiance team</p>
+                </div>
+                <div>
+    
+                <div class="row team-member" id="doctor-list">
+                    <div class="spinner-border" style="margin: auto; width: 100px; height: 100px;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- ################# Footer Starts Here#######################--->
 
@@ -177,7 +197,7 @@
         <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
         <script src="assets/js/script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-        
+        <script src="assets/js/doctor-service.js"></script>
         <script src="assets/js/dept-service.js"></script>
         <script src="assets/js/news-service.js"></script>
 
@@ -211,45 +231,157 @@
     </div>
   </div>
 
+  <div class="modal fade" id="addNewsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addNewsForm">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add news</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="nname" id="nname" type="text" class="form-control required" placeholder="Enter title">
+                      </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input style="margin-top: 10px;" name="description" id="description" type="text" class="form-control required" placeholder="Description">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Image</label>
+                        <input style="margin-top: 10px;" name="image" id="image" type="text" class="form-control required" placeholder="Description">
+                      </div>
+  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark ">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="exampleModalD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit department</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit department</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input name="name" id="name" type="text" class="form-control required" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" id="description" type="text" class="form-control required" placeholder="Enter desc">
-                    </div>
+                    <input id="name" type="text" />
+                    <input id="description" type="text" />
+                    <input id="id" type="hidden" />
                                          
-                    <div class="form-group">
-                      <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-                    </div>
+                
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark save-news-button" onclick="DeptService.update()">Save changes</button>
+                    <button type="submit" class="btn btn-dark save-dept-button" onclick="DeptService.update()">Save changes</button>
                 </div>
         </div>
     </div>
   </div>
 
+  <div class="modal fade" id="exampleModalN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input id="id" type="hidden" />
+            <input id="nname" type="text" />
+            <input id="description" type="text" />
+            <input id="image" type="text" />
+          </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save-doctor-button" onclick="NewsService.update()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input id="id" type="hidden" />
+            <input id="dname" type="text" />
+            <input id="dpassword" type="hidden" />
+            <input id="demail" type="text" />
+            <input id="specialities" type="text" />
+            <input id="image" type="text" />
+          </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save-doctor-button" onclick="DoctorService.update()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+
+  <!-- Add Modal -->
+<div class="modal fade" id="addDoctorModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="addDoctorForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add doctor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input name="dname" type="text" class="form-control required" placeholder="Enter name">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input name="demail" type="text" class="form-control required" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input name="dpassword" type="text" class="form-control required" placeholder="Enter password">
+                <div class="form-group">
+                    <label>Specialization</label>
+                    <input name="specialities" type="text" class="form-control required" placeholder="Enter specialization">
+                  </div>
+                  <div class="form-group">
+                    <label>image</label>
+                    <input name="image" type="text" class="form-control required" placeholder="Enter image">
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 <script>
     var token = localStorage.getItem("token");
       if (token){
-        DeptService.init()
-        NewsService.init()
-      }else{
+        DeptService.init();
+        NewsService.init();
+        DoctorService.init();
+    }else{
           window.location.replace("login.html");
       }
   </script>

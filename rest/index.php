@@ -49,6 +49,12 @@ Flight::route('/locked/*', function(){
       }
   });
 
+  Flight::route('GET /docs.json', function() {
+    $openapi = \OpenApi\scan('routes');
+    header('Content-Type: application/json');
+    echo $openapi->toJson();
+  });
+
 require_once __DIR__.'/routes/DoctorRoutes.php';
 require_once __DIR__.'/routes/NewsRoutes.php';
 require_once __DIR__ .'/routes/AppointmentRoutes.php';

@@ -1,6 +1,6 @@
 var NewsService = {
     init: function() {
-        $('#addMissingForm').validate({
+        $('#addNewsForm').validate({
             submitHandler: function(form) {
                 var entity = Object.fromEntries((new FormData(form)).entries());
                 NewsService.add(entity);
@@ -24,12 +24,16 @@ var NewsService = {
                 html += `
                 <div class="col-lg-4 col-md-6">
         				<div class="single-blog">
-        					<figure>
-        						<img src="assets/images/blog/`+data[i].image+`" alt="">
-        					</figure>
+        					
         					<div class="blog-detail">
+                                <img class="teammempic" alt="" src="assets/images/blog/`+data[i].image+`">
+                                <br>
 								<h4>`+data[i].nname+`</h4>
 								<p> `+data[i].description+`</p>
+                                <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary news-button" onclick="NewsService.get(`+data[i].id+`)">Edit</button>
+                                <button type="button" class="btn btn-danger news-button" onclick="NewsService.delete(`+data[i].id+`)">Delete</button>
+                              </div>
 								<div class="link">
 									<a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
 								</div>
@@ -44,143 +48,80 @@ var NewsService = {
             }
         })
     },
+
     
-    list_by_id: function(id) {
-        $('.missing-button').attr('disabled', true);
-        $('#missing-item').html('loading...');
-        $.ajax({
-            url: 'rest/missing/' + id,
-            type: 'GET',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-              },
-            success: function(data) {
+ 
+
+
+    get: function(id){
+        $('.news-button').attr('disabled', true);
+        $.get('rest/news/'+ id, function(data){
             $("#id").val(data.id);
-            $("#status").val(data.status); 
-
-            var dateStrS = data.last_time_seen;
-            var dateS = new Date(dateStrS);
-            var optionsS = { month: 'short', day: 'numeric', year: 'numeric' };
-            var formattedDateS = dateS.toLocaleDateString('en-US', optionsS);
-
-            var dateStr = data.date_of_birth;
-            var date = new Date(dateStr);
-            var options = { month: 'short', day: 'numeric', year: 'numeric' };
-            var formattedDate = date.toLocaleDateString('en-US', options);
-
-            
-                var html = "";
-            
-                html += `
-                
-                        <img class="rounded w-50" src="images/missing/`+data.image+`" alt="Image"><br>
-                        <p class="list-group-item-text"><strong>ID: </strong>` + data.id + `</p>
-                        <p class="list-group-item-text"><strong>First Name: </strong>` + data.first_name + `</p>
-                        <p class="list-group-item-text"><strong>Last Name: </strong>` + data.last_name + `</p>
-                        <p class="list-group-item-text"><strong>Place and Date of Birth: </strong>` +data.place_of_birth+ ", " + formattedDate + `</p>
-                        <p class="list-group-item-text"><strong>Disappearance: </strong> `+data.last_place_seen+ " - " + formattedDateS + `</p>
-                        <p class="list-group-item-text"><strong>Contact: </strong>` + data.contact + `</p>
-                        <p class="list-group-item-text"><strong>Description: </strong>` + data.description + `</p>
-                        <p class="list-group-item-text"><strong>Physical Charasteristics: </strong>` + data.physical_chars + `</p>
-                        
-                    `;
-            
-
-            
-            
-            $("#exampleModalM").modal("show");
-            $("#missing-item").html(html);
-            $('.missing-button').attr('disabled', false);
-            
-        }});
-    },
-
-
-    get: function(id) {
-        $('.missing-button').attr('disabled', true);
-        $.ajax({
-            url: 'rest/missing/' + id,
-            type: 'GET',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-              },
-            success: function(data) {
-            $("#id").val(data.id);
-            $("#first_name").val(data.first_name);
-            $("#last_name").val(data.last_name);
-            $("#date_of_birth").val(data.date_of_birth);
-            $("#place_of_birth").val(data.place_of_birth);
-            $("#last_time_seen").val(data.last_time_seen);
-            $("#last_place_seen").val(data.last_place_seen);
-            $("#contact").val(data.contact);
+            $("#nname").val(data.nname);
             $("#description").val(data.description);
-            $("#physical_chars").val(data.physical_chars);
             $("#image").val(data.image);
-            $("#exampleModalM").show();
-            $('.missing-button').attr('disabled', false);
-        }});
-    },
+       
+            $("#exampleModalN").modal("show");
+            $('.news-button').attr('disabled', false);
+        })
+      },
 
-    add: function(missing) {
+    add: function(news) {
         $.ajax({
             contentType: "application/json",
-            url: 'rest/locked/missing',
+            url: 'rest/locked/news',
             type: 'POST',
-            data: JSON.stringify(missing),
+            data: JSON.stringify(news),
             dataType: "json",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 console.log(result);
-                $("#missing-list").html(`
+                $("#news-list").html(`
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 `);
                 NewsService.list();
-                $("#addMissingModal").hide();
+                $("#addNewsModal").modal("hide");
             }
         });
     },
 
-    update: function() {
-        $('.save-missing-button').attr('disabled', true);
-        var missing = {};
-        missing.id = $('#id').val();
-        missing.first_name = $('#first_name').val();
-        missing.last_name = $('#last_name').val();
-        missing.image = $('#image').val();
-        missing.description = $('#description').val();
-        console.log($('#description').val());
-
+    update: function(){
+        $('.news-button').attr('disabled', true);
+        var news = {};
+  
+        news.nname = $('#nname').val();
+        news.description = $('#description').val();
+        news.image = $('#image').val();
+        
+  
         $.ajax({
-            contentType: "application/json",
-            url: 'rest/locked/missing/' + $('#id').val(),
-            type: 'PUT',
-            data: JSON.stringify(missing),
-            dataType: "json",
-            success: function(result) {
-                console.log(result);
-
-                $("#exampleModalM").modal("hide");
-                $("#missing-list").html(`
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                `);
-                $('.save-missing-button').attr('disabled', false);
-                NewsService.list();
-            }
+          url: 'rest/news/'+$('#id').val(),
+          type: 'PUT',
+          data: JSON.stringify(news),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(result) {
+              $("#exampleModalN").modal("hide");
+              $('.news-button').attr('disabled', false);
+              $("#news-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
+              NewsService.list(); // perf optimization
+          }
         });
-    },
+      },
 
-    delete: function(id) {
-        $('.missing-button').attr('disabled', true);
+    delete: function(id){
+        $('.doctor-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/locked/missing/' + id,
-            type: 'DELETE',
-            success: function(result) {
-                $("#missing-list").html();
-                NewsService.list();
-            }
+          url: 'rest/news/'+id,
+          type: 'DELETE',
+          success: function(result) {
+              $("#news-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
+              NewsService.list();
+          }
         });
-    }
+      }
 }

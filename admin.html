@@ -52,11 +52,10 @@
                             <li><a href="about_us.html">About Us</a></li>
                             <li><a href="news.html">News</a></li>  
                             <li><a href="contact_us.html">Contact Us</a></li>
+                            <button class="btn btn-outline-success" type="button" onclick="AdminService.logout()">Logout</button>
                         </ul>
                     </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <button class="btn btn-info">Book an Appointment</button>
-                    </div>
+                  
                 </div>
 
             </div>
@@ -200,6 +199,7 @@
         <script src="assets/js/doctor-service.js"></script>
         <script src="assets/js/dept-service.js"></script>
         <script src="assets/js/news-service.js"></script>
+        <script src="assets/js/admin-service.js"></script>
 
 </body>
 
@@ -381,6 +381,7 @@
         DeptService.init();
         NewsService.init();
         DoctorService.init();
+        
     }else{
           window.location.replace("login.html");
       }

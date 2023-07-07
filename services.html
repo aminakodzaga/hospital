@@ -50,15 +50,14 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about_us.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
                             <li><a href="news.html">News</a></li>  
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="contact_us.html">Contact Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+
+                          
+                          
                         </ul>
                     </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <button class="btn btn-info">Book an Appointment</button>
-                    </div>
+                   
                 </div>
 
             </div>
@@ -71,7 +70,7 @@
                <div class="page-nav no-margin row">
                    <div class="container">
                        <div class="row">
-                           <h2>Our Services</h2>
+                           <h2>Our departments</h2>
                            <ul>
                                <li> <a href="#"><i class="fas fa-home"></i> Home</a></li>
                                <li><i class="fas fa-angle-double-right"></i> Our Services</li>
@@ -91,62 +90,11 @@
                 <p>Take a look at some of our key features</p>
             </div>
 
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                        <i class="fas fa-heartbeat"></i>
-                        <h5>Cardiology</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                        <i class="fas fa-ribbon"></i>
-                        <h5>Orthopaedic</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                       <i class="fab fa-monero"></i>
-                        <h5>Neurologist</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                        <i class="fas fa-capsules"></i>
-                        <h5>Pharma Pipeline</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                        <i class="fas fa-prescription-bottle-alt"></i>
-                        <h5>Pharma Team</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-key">
-                        <i class="far fa-thumbs-up"></i>
-                        <h5>High Quality treatments</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                    </div>
+            <div class="row" id="dept-list">
+                <div class="spinner-border" style="margin: auto; width: 100px; height: 100px;" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-
-
-
-
-
 
         </div>
 
@@ -214,6 +162,8 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/dept-service-index.js"></script>
+<script>DeptServiceIndex.init()</script>
 
 
 </html>

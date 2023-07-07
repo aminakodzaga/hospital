@@ -27,13 +27,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-5 d-none d-lg-block right-item">
-                        <ul>
-                            <li><a><i class="fab fa-github"></i></a></li>
-                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
-                            <li> <a><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a><i class="fab fa-twitter"></i></a></li>
-                            <li> <a><i class="fab fa-facebook-f"></i></a></li>
-                        </ul>
+                       
                     </div>
                 </div>
 
@@ -51,7 +45,7 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about_us.html">About Us</a></li>
                             <li><a href="news.html">News</a></li>  
-                            <li><a href="contact_us.html">Contact Us</a></li>
+                            <li><a href="services.html">Services</a></li>
                             <button class="btn btn-outline-success" type="button" onclick="AdminService.logout()">Logout</button>
                         </ul>
                     </div>
@@ -131,6 +125,19 @@
                 </div>
             </div>
         </section>
+        <section class="appointment ">
+            <div class="container">
+                <div class="row session-title">
+                   <h2> List of appointments </h2>
+                   <p>Take a look at appointments </p>
+               </div>
+               <div class="blog-row row" id="appointment-list">
+                   <div class="spinner-border" style="margin: auto; width: 100px; height: 100px;" role="status">
+                       <span class="visually-hidden">Loading...</span>
+                   </div>
+               </div>
+            </div>
+        </section>
 
     <!-- ################# Footer Starts Here#######################--->
 
@@ -176,13 +183,7 @@
             <div class="container">
                 <a href="https://www.smarteyeapps.com/">2015 &copy; All Rights Reserved | Designed and Developed by Smarteyeapps</a>
                 
-                <span>
-                <a><i class="fab fa-github"></i></a>
-                <a><i class="fab fa-google-plus-g"></i></a>
-                <a><i class="fab fa-pinterest-p"></i></a>
-                <a><i class="fab fa-twitter"></i></a>
-                <a><i class="fab fa-facebook-f"></i></a>
-        </span>
+       
             </div>
 
         </div>
@@ -200,6 +201,7 @@
         <script src="assets/js/dept-service.js"></script>
         <script src="assets/js/news-service.js"></script>
         <script src="assets/js/admin-service.js"></script>
+        <script src="assets/js/appointment-service.js"></script>
 
 </body>
 
@@ -216,10 +218,7 @@
                         <label>Name</label>
                         <input name="name" id="name" type="text" class="form-control required" placeholder="Enter title">
                       </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input style="margin-top: 10px;" name="description" id="description" type="text" class="form-control required" placeholder="Description">
-                      </div>
+                    
   
                 </div>
                 <div class="modal-footer">
@@ -274,7 +273,7 @@
                 <div class="modal-body">
                     
                     <input id="name" type="text" />
-                    <input id="description" type="text" />
+                   
                     <input id="id" type="hidden" />
                                          
                 
@@ -381,6 +380,7 @@
         DeptService.init();
         NewsService.init();
         DoctorService.init();
+        AppointmentService.init();
         
     }else{
           window.location.replace("login.html");

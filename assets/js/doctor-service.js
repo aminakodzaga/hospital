@@ -56,6 +56,7 @@ var DoctorService = {
     },
 
     add: function(doctor){
+      
       $.ajax({
         url: 'rest/locked/doctors',
         type: 'POST',
@@ -96,7 +97,7 @@ var DoctorService = {
             $("#exampleModal").modal("hide");
             $('.save-doctor-button').attr('disabled', false);
             $("#doctor-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
-            DoctorService.list(); // perf optimization
+            DoctorService.list(); 
         }
       });
     },
@@ -115,4 +116,5 @@ var DoctorService = {
         }
       });
     },
+    
 }

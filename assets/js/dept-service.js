@@ -27,7 +27,7 @@ var DeptService = {
                     <div class="single-key">
                         <i class="fas fa-heartbeat"></i>
                         <h5>`+data[i].name+`</h5>
-                        <p>`+data[i].description+`</p>
+                       
                         <button type="button" class="btn btn-primary dept-button" onClick="DeptService.get(` + data[i].id + `)">EDIT</button>
                         <button type="button" class="btn btn-danger dept-button" onClick="DeptService.delete(` + data[i].id + `)">DELETE</button>
                     </div>
@@ -44,7 +44,7 @@ var DeptService = {
         $.get('rest/department/'+id, function(data){
                 $("#id").val(data.id);
                 $("#name").val(data.name);
-                $("#description").val(data.description);
+                
                 $("#exampleModalD").modal("show");
         });
     },

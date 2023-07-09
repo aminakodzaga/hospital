@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @OA\Get(path="/locked/appointment", tags={"appointment"},
+ * @OA\Get(path="/appointment", tags={"appointment"},
  *         summary="Return all appointments from the API. ",
  *         @OA\Response( response=200, description="List of appointmentpeople.")
  * )
  */
-Flight::route('GET /locked/appointment', function(){
+Flight::route('GET /appointment', function(){
    Flight::json(Flight::appointment_service() -> get_all());
     
 });
@@ -17,20 +17,20 @@ Flight::route("GET /appointment_by_id", function(){
 });
 
 /**
- * @OA\Get(path="/locked/appointment/{id}", tags={"appointment"},
+ * @OA\Get(path="/appointment/{id}", tags={"appointment"},
  *         summary="Return appointment  by id from the API. ",
  *         @OA\Parameter(in="path", name="id", example=1, description="ID of appointment"),
  *         @OA\Response( response=200, description="Individual appointment.")
  * )
  */
-Flight::route('GET /locked/appointment/@id', function($id){
+Flight::route('GET /appointment/@id', function($id){
     Flight::json(Flight::appointment_service() -> get_by_id($id));
   
 });
 
 /**
 * @OA\Post(
-*     path="/locked/appointment", security={{"ApiKeyAuth": {}}},
+*     path="/appointment", 
 *     description="Add appointment",
 *     tags={"appointment"},
 *     @OA\RequestBody(description="appointment ", required=true,
@@ -54,7 +54,7 @@ Flight::route('GET /locked/appointment/@id', function($id){
 *     )
 * )
 */
-Flight::route('POST /locked/appointment', function(){
+Flight::route('POST /appointment', function(){
   Flight::json(Flight::appointment_service()->add(Flight::request()->data->getData()));
   });
 

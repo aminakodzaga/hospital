@@ -34,6 +34,7 @@ var DeptService = {
                 </div>
                     `;
                 }
+                
                 $("#dept-list").html(html);
             }
         })
@@ -65,6 +66,8 @@ var DeptService = {
 
                 DeptService.list();
                 $("#addDeptModal").modal("hide");
+                location.reload();
+                
             }
         });
     },

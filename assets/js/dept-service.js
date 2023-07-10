@@ -62,11 +62,11 @@ var DeptService = {
               },
             success: function(result) {
                 console.log(result);
-                $('.modal-backdrop').remove();                    
+                    
 
                 DeptService.list();
                 $("#addDeptModal").modal("hide");
-                location.reload();
+                
                 
             }
         });

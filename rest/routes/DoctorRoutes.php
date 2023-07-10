@@ -12,9 +12,6 @@ Flight::route('GET /doctors', function(){
     
 });
 
-Flight::route("GET /doctor_by_id", function(){
-  Flight::json(Flight::doctor_service()->get_by_id(Flight::request()->query['id']));
-});
 /**
  * @OA\Get(path="/doctor/{id}", tags={"doctor"},
  *         summary="Return doctor  by id from the API. ",

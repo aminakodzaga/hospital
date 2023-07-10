@@ -11,10 +11,6 @@ Flight::route('GET /news', function(){
 });
 
 
-Flight::route("GET /news_by_id", function(){
-  Flight::json(Flight::news_service()->get_by_id(Flight::request()->query['id']));
-});
-
 /**
  * @OA\Get(path="/news/{id}", tags={"news"},
  *         summary="Return news  by id from the API. ",

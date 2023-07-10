@@ -3,7 +3,7 @@
 /**
  * @OA\Get(path="/appointment", tags={"appointment"},
  *         summary="Return all appointments from the API. ",
- *         @OA\Response( response=200, description="List of appointmentpeople.")
+ *         @OA\Response( response=200, description="List of appointment.")
  * )
  */
 Flight::route('GET /appointment', function(){
@@ -12,9 +12,6 @@ Flight::route('GET /appointment', function(){
 });
 
 
-Flight::route("GET /appointment_by_id", function(){
-  Flight::json(Flight::appointment_service()->get_by_id(Flight::request()->query['id']));
-});
 
 /**
  * @OA\Get(path="/appointment/{id}", tags={"appointment"},

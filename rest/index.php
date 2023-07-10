@@ -22,13 +22,10 @@ Flight::register('appointment_service', "AppointmentService");
 Flight::register('department_service', "DepartmentService");
 
 Flight::route('/locked/*', function(){
-      /*
-    $path = Flight::request()->url;
-    if (preg_match('/^\/(login|login.html|news(?:\/\d+)?|missing(?:\/\d+)?|wanted(?:\/\d+)?|newsletter|reports)$/', $path)) {
-      return TRUE; // exclude certain routes from middleware
-    }
-    */
-  
+  $path = Flight::request()->url;
+  if ($path == '/login' || $path == '/docs.json') {
+    return true;
+}
       $headers = getallheaders();
       if (@!$headers['Authorization']){
           Flight::json(["message" => "Unauthorized access"], 403);
@@ -37,7 +34,7 @@ Flight::route('/locked/*', function(){
           try {
               $decoded = JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
               // Token is valid
-              Flight::set('admin', $decoded);
+              Flight::set('user', $decoded);
               return TRUE;
           } catch (\Exception $e) {
               // Other errors

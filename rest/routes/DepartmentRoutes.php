@@ -15,10 +15,6 @@ Flight::route('GET /department', function(){
 });
 
 
-Flight::route("GET /department_by_id", function(){
-  Flight::json(Flight::department_service()->get_by_id(Flight::request()->query['id']));
-});
-
 /**
  * @OA\Get(path="/department/{id}", tags={"department"},
  *         summary="Return department  by id from the API. ",

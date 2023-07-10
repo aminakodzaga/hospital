@@ -10,7 +10,7 @@ use Firebase\JWT\Key;
 *     @OA\RequestBody(description="Admin info", required=true,
 *       @OA\MediaType(mediaType="application/json",
 *    			@OA\Schema(
-*    				@OA\Property(property="email", type="string", example="admin@gmail.com",	description="Email"),
+*    				@OA\Property(property="email", type="string", example="amina@gmail.com",	description="Email"),
 *    				@OA\Property(property="password", type="string", example="123",	description="Password" )
 *        )
 *     )),
@@ -27,6 +27,7 @@ use Firebase\JWT\Key;
 Flight::route('POST /login', function(){
     $login = Flight::request()->data->getData();
     $user = Flight::adminDao()->get_user_by_email($login['email']);
+  
     if (isset($user['id'])){
       if($user['password'] == md5($login['password'])){
         unset($user['password']);

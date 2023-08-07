@@ -51,7 +51,7 @@ Flight::route('GET /department/@id', function($id){
 *     )
 * )
 */
-Flight::route('POST /locked/department', function(){
+Flight::route('POST /department', function(){
   Flight::json(Flight::department_service()->add(Flight::request()->data->getData()));
     
 
@@ -59,7 +59,7 @@ Flight::route('POST /locked/department', function(){
 
   /**
 * @OA\Put(
-*     path="/locked/department/{id}", security={{"ApiKeyAuth": {}}},
+*     path="/department/{id}", security={{"ApiKeyAuth": {}}},
 *     description="Update department",
 *     tags={"department"},
 *     @OA\Parameter(in="path", name="id", example=1, description="department_id"),
@@ -79,7 +79,7 @@ Flight::route('POST /locked/department', function(){
 *     )
 * )
 */
-  Flight::route('PUT /locked/department/@id', function($id){
+  Flight::route('PUT /department/@id', function($id){
     $department = Flight::request()->data->getData();
     Flight::json(['message' => "department edit successfully",
                   'data' => Flight::department_service()->update($department, $id)
@@ -88,7 +88,7 @@ Flight::route('POST /locked/department', function(){
 
 /**
 * @OA\Delete(
-*     path="/locked/department/{id}", security={{"ApiKeyAuth": {}}},
+*     path="/department/{id}", security={{"ApiKeyAuth": {}}},
 *     description="Delete department",
 *     tags={"department"},
 *     @OA\Parameter(in="path", name="id", example=1, description="department_id"),

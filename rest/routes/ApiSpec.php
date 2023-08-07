@@ -8,11 +8,11 @@
  *   )),
  * @OA\OpenApi(
  *   @OA\Server(
- *       url="http://localhost/hospital2/rest/",
+ *       url="http://localhost/hospital/rest/",
  *       description="Development Environment"
  *   ),
  * @OA\Server(
- *       url="http://localhost/hospital2/rest/",
+ *       url="http://localhost/hospital/rest/",
  *       description="Production Environment"
  *   )
  * ),

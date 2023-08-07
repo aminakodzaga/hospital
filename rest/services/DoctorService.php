@@ -11,14 +11,7 @@ class DoctorService extends BaseService{
         return $this->dao->get_doctor_by_name($dname);
       }
 
-    
-        /*
-        example 
-        send an email
-        if(!validateField($entity['first_name'])){
-            //error
-        }
-        */
+
     }
 
 ?>

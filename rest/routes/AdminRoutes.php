@@ -6,7 +6,7 @@ use Firebase\JWT\Key;
 * @OA\Post(
 *     path="/login",
 *     description="Admin login to the system",
-*     tags={"admin"},
+*     tags={"adminxxx"},
 *     @OA\RequestBody(description="Admin info", required=true,
 *       @OA\MediaType(mediaType="application/json",
 *    			@OA\Schema(

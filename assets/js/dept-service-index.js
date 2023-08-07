@@ -17,9 +17,9 @@ var DeptServiceIndex = {
                 html += `
                 <div class="col-lg-4 col-md-6">
                     <div class="single-key">
-                        <i class="fas fa-heartbeat"></i>
+                        <i class="fas fa-medkit"></i>
                         <h5>`+data[i].name+`</h5>
-                        <p>`+data[i].description+`</p>
+                      
                        
                     </div>
                 </div>

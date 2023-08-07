@@ -57,7 +57,7 @@ Flight::route('POST /appointment', function(){
 
  /**
 * @OA\Put(
-*     path="locked/appointment/{id}", security={{"ApiKeyAuth": {}}},
+*     path="/appointment/{id}", 
 *     description="Update appointment",
 *     tags={"appointment"},
 *     @OA\Parameter(in="path", name="id", example=1, description="appointment_id"),
@@ -81,7 +81,7 @@ Flight::route('POST /appointment', function(){
 *     )
 * )
 */
-  Flight::route('PUT locked/appointment/@id', function($id){
+  Flight::route('PUT /appointment/@id', function($id){
     $appointment = Flight::request()->data->getData();
     Flight::json(['message' => "appointment edit successfully",
                   'data' => Flight::appointment_service()->update($appointment, $id)

@@ -51,7 +51,7 @@ var AppointmentService = {
         })
       },
 
-    add: function(appointment) {
+      add: function(appointment) {
         $.ajax({
             contentType: "application/json",
             url: 'rest/appointment',
@@ -60,10 +60,17 @@ var AppointmentService = {
             dataType: "json",
             success: function(result) {
                 console.log(result);
-                
+                $('.modal-backdrop').remove();
+                AppointmentService.list();
                 $("#addAppModal").modal("hide");
+
+                toastr.success("Booking added");
+                setTimeout(function() {
+                    location.reload();
+                }, 1000); 
             }
         });
     },
+    
 
 }

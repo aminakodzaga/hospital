@@ -57,11 +57,20 @@ var DeptService = {
               },
             success: function(result) {
                 console.log(result);
-
+                $('.modal-backdrop').remove();
+                $("#dept-list").html(`
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                `);
+                                   
 
                 DeptService.list();
                 $("#addDeptModal").modal("hide");
-
+                setTimeout(function() {
+                    location.reload();
+                }, 1000); 
+               
 
             }
         });
@@ -70,6 +79,7 @@ var DeptService = {
         $('.save-dept-button').attr('disabled', true);
         var dept = {};
         dept.name = $('#name').val();
+        dept.description = $('#description').val();
         $.ajax({
         url: 'rest/locked/department/'+$('#id').val(),
         type: 'PUT',

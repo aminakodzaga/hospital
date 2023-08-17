@@ -51,7 +51,7 @@ Flight::route('GET /department/@id', function($id){
 *     )
 * )
 */
-Flight::route('POST /department', function(){
+Flight::route('POST /locked/department', function(){
   Flight::json(Flight::department_service()->add(Flight::request()->data->getData()));
     
 
@@ -79,7 +79,7 @@ Flight::route('POST /department', function(){
 *     )
 * )
 */
-  Flight::route('PUT /department/@id', function($id){
+  Flight::route('PUT /locked/department/@id', function($id){
     $department = Flight::request()->data->getData();
     Flight::json(['message' => "department edit successfully",
                   'data' => Flight::department_service()->update($department, $id)

@@ -7,9 +7,11 @@ var AppointmentService = {
 
             }
         });
+       
 
     },
 
+    
     list: function(){
         $.get("rest/appointment", function(data) {
           $("#appointment-list").html("");
@@ -31,8 +33,9 @@ var AppointmentService = {
             `;
           }
           $("#appointment-list").html(html);
+     
         });
-      },
+    },
     
     
 
@@ -71,6 +74,7 @@ var AppointmentService = {
             }
         });
     },
+
     
 
 }

@@ -68,9 +68,19 @@ var DoctorService = {
           xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
         },
         success: function(result) {
-            $("#doctor-list").html('<div class="spinner-border" role="status"> <span class="sr-only"></span>  </div>');
+          console.log(result);
+          $('.modal-backdrop').remove();
+          $("#doctor-list").html(`
+          <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+          </div>
+          `);
+           
             DoctorService.list(); // perf optimization
             $("#addDoctorModal").modal("hide");
+            setTimeout(function() {
+              location.reload();
+          }, 1000); 
         }
       });
     },

@@ -48,6 +48,7 @@ var DoctorService = {
       $("#id").val(data.id);
         $("#dname").val(data.dname);
       $("#demail").val(data.demail);
+      $("#date").val(data.date);
       $("#specialities").val(data.specialities);
       $("#image").val(data.image);
         $("#exampleModal").modal("show");
@@ -80,7 +81,7 @@ var DoctorService = {
 
       doctor.dname = $('#dname').val();
       doctor.demail = $('#demail').val();
-      doctor.dpassword = $('#dpassword').val();
+      doctor.date = $('#date').val();
       doctor.specialities = $('#specialities').val();
       doctor.image = $('#image').val();
 

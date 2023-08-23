@@ -342,13 +342,22 @@
                                 <input type="text" name="country" class="form-control" id="country" placeholder="Country">
                             </div>
                         </div>
-    
                         <div class="col-6">
-                            <div class="form-group">
-                                <label for="date" style="font-size: 14px;">Date of Birth (yyyy-MM-dd)</label>
-                                <input type="datetime" name="date" class="form-control" id="date" placeholder="yyyy-MM-dd">
+                            <div class="form-floating">
+                                <label for="date">Date and time</label>
+                                <select class="form-select" name="date" id="date">
+                                    <option value="2020-01-01 15:10:10">11:00 01.01.2023.</option>
+                                    <option value="2020-01-01 15:10:10">12:00 01.01.2023.</option>
+                                    <option value="2020-02-02 15:10:15">13:00 02.01.2023.</option>
+                                    <option value="2020-02-02 15:10:30">13:30 02.01.2023.</option>
+                                    <option value="2020-02-03 15:10:30">13:45 03.01.2023.</option>
+                                    <option value="2020-02-04 15:10:30">11:45 04.01.2023.</option>
+                                    
+                                </select>
+                                
                             </div>
                         </div>
+
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="doctor_id">Doctors</label>

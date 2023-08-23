@@ -79,7 +79,7 @@ var DeptService = {
         $('.save-dept-button').attr('disabled', true);
         var dept = {};
         dept.name = $('#name').val();
-        dept.description = $('#description').val();
+       
         $.ajax({
         url: 'rest/locked/department/'+$('#id').val(),
         type: 'PUT',

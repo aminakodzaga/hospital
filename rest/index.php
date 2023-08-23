@@ -16,7 +16,7 @@ require_once __DIR__.'/dao/AdminDao.class.php';
 
 
 Flight::register('adminDao', 'AdminDao');
-Flight::register('doctor_service', "DoctorService");
+Flight::register('doctor_service', 'DoctorService');
 Flight::register('news_service', "NewsService");
 Flight::register('appointment_service', "AppointmentService");
 Flight::register('department_service', "DepartmentService");

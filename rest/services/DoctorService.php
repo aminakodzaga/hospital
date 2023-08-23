@@ -11,7 +11,9 @@ class DoctorService extends BaseService{
         return $this->dao->get_doctor_by_name($dname);
       }
 
-
+      public function get_by_name_desc($dname) {
+        return $this->dao->get_by_name_desc($dname);
+    }
     }
 
 ?>

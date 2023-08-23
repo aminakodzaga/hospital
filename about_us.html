@@ -48,13 +48,16 @@
                             <li><a href="services.html">Services</a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <button class="btn btn-info">Book an Appointment</button>
-                    </div>
+                    <div class="ml-auto text-right">
+                        <input type="text" class="form-control-sm mr-lg-2" id="search-bar" placeholder="Search wanted ..." style="width: 300dp;">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="event.preventDefault(); DoctorServiceIndex.list_by_search();">Search</button>
+                      </div>
+                  
                 </div>
 
             </div>
         </div>
+      
 
     </header>
 

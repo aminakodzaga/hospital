@@ -115,4 +115,9 @@ Flight::route('DELETE /locked/doctors/@id', function($id){
     Flight::json(["message"=> "deleted"]);
 });
 
+Flight::route('GET /search_name_desc', function(){
+  $dname = Flight::request()->query['dname'];
+  Flight::json(Flight::doctor_service()->get_by_name_desc($dname));
+});
+
 ?>

@@ -4,6 +4,7 @@ var AppointmentService = {
             submitHandler: function(form) {
                 var entity = Object.fromEntries((new FormData(form)).entries());
                 AppointmentService.add(entity);
+                
 
             }
         });
@@ -24,7 +25,7 @@ var AppointmentService = {
                 <div class="card-body">
                   <h5 class="card-title">`+ data[i].date +`</h5>
                   <h5>`+data[i].name+`</h5>
-                  <h5>`+data[i].id+`</h5>
+                  <h5>`+data[i].doctor_id+`</h5>
                  
                  
                 </div>

@@ -106,5 +106,9 @@ Flight::route('DELETE /locked/department/@id', function($id){
     Flight::department_service()->delete($id);
     Flight::json(["message"=> "deleted"]);
 });
+Flight::route('GET /search_name', function(){
+  $name = Flight::request()->query['name'];
+  Flight::json(Flight::department_service()->get_by_name($name));
+});
 
 ?>
